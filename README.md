@@ -46,7 +46,7 @@ Usage
 
 *Upload file*
 
-```
+```PYTHON
 import s3
 
 package = s3.S3UploadPackage(
@@ -66,7 +66,7 @@ s.upload(package)
 
 *Upload file*
 
-```
+```BASH
 $> python s3_upload.py -h
 
 usage: s3_upload.py [-h] [--type TYPE] [--month] [--week] [--day] [--hour]
