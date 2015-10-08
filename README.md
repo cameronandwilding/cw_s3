@@ -20,7 +20,7 @@ Installation
 pip install virtualenv
 # goto to repo root
 virtualenv venv
-./bin/pip install boto3
+./venv/bin/pip install boto3
 ```
 
 - or globally: ```pip install boto3```
