@@ -44,7 +44,7 @@ class S3RotationPolicy:
 
 class S3Handler:
     # @TODO maybe to configuration
-    def __init__(self, bucket_name="cwdumps"):
+    def __init__(self, bucket_name):
         """
         :type bucket_name: string
         """
@@ -55,7 +55,12 @@ class S3Handler:
         """
         :type upload_package: S3UploadPackage
         """
-        self.s3.Object(self.bucket_name, upload_package.full_destination_path()).put(Body=open(upload_package.path, 'rb'))
+        try:
+            self.s3.Object(self.bucket_name, upload_package.full_destination_path()).put(Body=open(upload_package.path, 'rb'))
+            print(upload_package.path + " has been uploaded.")
+        except Exception as e:
+            print("Upload failed.")
+            print(e.message)
 
 
 class S3UploadPackage():
