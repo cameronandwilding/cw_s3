@@ -65,6 +65,14 @@ s.upload(package)
 
 **Runners**
 
+*Ping (health check)*
+
+Print out "Works!" if it's accessible:
+
+```BASH
+$> python s3_ping.py BUCKETNAME && echo "Works!"
+```
+
 *Upload file*
 
 ```BASH
