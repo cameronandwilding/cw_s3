@@ -8,22 +8,23 @@ Requirements
 - python 2.x (>=2.6)
 - pip
 - boto3
+- argparse
 
 Installation
 ------------
 
-*Boto3*
-
-- (recommended) create a virtial environment
+*Virtual Python environment (recommended)*
 
 ```
 pip install virtualenv
-# goto to repo root
-virtualenv venv
-./venv/bin/pip install boto3
 ```
 
-- or globally: ```pip install boto3```
+*Modules*
+
+```
+pip install boto3
+pip install argparse
+```
 
 *Credentials*
 
