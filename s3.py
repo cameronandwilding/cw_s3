@@ -1,6 +1,7 @@
 import boto3
 from datetime import datetime
 from os import path
+import re
 
 
 class S3UploadType:
@@ -43,7 +44,6 @@ class S3RotationPolicy:
 
 
 class S3Handler:
-    # @TODO maybe to configuration
     def __init__(self, bucket_name):
         """
         :type bucket_name: string
@@ -56,15 +56,17 @@ class S3Handler:
         :type upload_package: S3UploadPackage
         """
         try:
-            self.s3.Object(self.bucket_name, upload_package.full_destination_path()).put(Body=open(upload_package.path, 'rb'))
+            self.s3.Object(self.bucket_name, upload_package.full_destination_path()).put(
+                Body=open(upload_package.path, 'rb'))
             print(upload_package.path + " has been uploaded.")
         except Exception as e:
             print("Upload failed.")
             print(e.message)
-
+            
 
 class S3UploadPackage():
-    def __init__(self, file_path, project, upload_type=S3UploadType.GENERIC_ASSET, rotation_policy=S3RotationPolicy.weekly()):
+    def __init__(self, file_path, project, upload_type=S3UploadType.GENERIC_ASSET,
+                 rotation_policy=S3RotationPolicy.weekly()):
         self.project = project
         self.rotation_policy = rotation_policy
         self.upload_type = upload_type

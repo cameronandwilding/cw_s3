@@ -27,5 +27,5 @@ package = s3.S3UploadPackage(
     rotation_policy=rotation_policy
 )
 
-s = s3.S3Handler(bucket_name=args.bucket)
-s.upload(package)
+service = s3.S3Handler(bucket_name=args.bucket)
+service.upload(package)
